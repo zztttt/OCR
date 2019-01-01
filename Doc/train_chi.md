@@ -39,7 +39,7 @@
 *   使用自定义字库效果：  
 Source:  
 ![](../Pic/monkey.jpg)
-Output：
+Output：  
 ![](picture/monkey_output.jpg)  
 很容易发现该识别并不是完美的，例如像孙悟空识别成了孙司空等等，这说明需要更为精确的字符集。
 
