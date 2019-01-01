@@ -17,7 +17,7 @@ if __name__ == '__main__':
   # Define config parameters.
   # '-l eng'  for using the English language
   # '--oem 1' for using LSTM OCR Engine
-  config = ('-l eng --oem 1 --psm 3')
+  config = ('-l chi_sim --oem 1 --psm 3')
  
   # Read image from disk
   im = cv2.imread(imPath, cv2.IMREAD_COLOR)
