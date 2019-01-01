@@ -23,7 +23,7 @@
         *   1    Neural nets LSTM engine only.
         *   2    Legacy + LSTM engines.
         *   3    Default, based on what is available.
-3.  Command Line Usage:  
+3.  Command Line Usage(just for reference):  
 ```
     $ tesseract image.jpg stdout -l eng --oem 1 --psm 3
 ```
