@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 import pip._internal
 import copy
 
-
+#review code
 def main():
     filename = "2.jpg"
     path = "/home/zzt/OCR/OCR/Code/"
@@ -32,4 +32,5 @@ def main():
     #cv2.waitKey(0)
     print(img)
     return 0
-main()
+if __name__ = '__main__':
+    main()
