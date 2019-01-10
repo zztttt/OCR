@@ -13,11 +13,12 @@ class MirrorPlus():
         self.mode = mode
         self.filename = filename
         self.father_path = os.path.abspath(os.path.dirname(os.getcwd()+os.path.sep+"."))+"/"
-        self.img_path = self.father_path + "Pic/"
+        self.img_path = self.father_path[0:self.father_path.find("Code")] + "Pic/"
         self.img_save_path = self.father_path + "Code/savedPic/"
         self.img = cv2.imread(self.img_path + self.filename)
-        #print("img_path", img_path)
-        #print("img_save_path", img_save_path)  
+        #print("img_path", self.img_path)
+        #print("img_save_path", self.img_save_path)  
+        #print("img", self.img)
     #plus the picture
     def Interpolation(self):
         img = copy.deepcopy(self.img)
