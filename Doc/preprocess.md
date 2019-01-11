@@ -41,16 +41,16 @@ After that, we find the interpolated images are rough with a lot of edges and co
 ## Split
 Use Projection Detection Method, count the valid pixel on the x-axis. Then set a threshold of the count of pixels, if the count of pixels greater than the threshold, then mark this row for the valid row.
 ```
-inLine = False
-start = 0
-    for i in range(height):
+inLine = False
+start = 0
+    for i in range(height):
         if((not(inLine)) and (projection[i] > 5)):
-            inLine = True
-            start = i
-        elif(i - start > 2 and projection[i] < 5 and inLine):
-            inLine = False
-            if (i - start > 2):
-                print i,start,i-start+2
+            inLine = True
+            start = i
+        elif(i - start > 2 and projection[i] < 5 and inLine):
+            inLine = False
+            if (i - start > 2):
+                print iW,start,i-start+2
                 cj = img[start:i,0:width]
 ```
 
