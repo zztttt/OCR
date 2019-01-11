@@ -56,8 +56,10 @@ class MirrorPlus():
         #img[y][x]
         for i in range(x):
             for j in range(y):
-                img2[j][i] = img[y - j - 1][i]
-        path = self.img_save_path + self.filename[0:self.filename.find('.')+1] + "jpg"
+                if self.mode == 0 :
+                    img2[j][i] = img[y - j - 1][i]
+        path = self.filename[0:self.filename.find('.')+1] + "tif"
+        path = self.img_save_path + "d.normal.exp" + path
         print(path)
         cv2.imwrite(path, img2)
         cv2.imshow("111", img2)
@@ -103,7 +105,16 @@ class MirrorPlus():
                     cv2.imwrite(path, cj)
 #review code
 def main():
-    m = MirrorPlus("4.bmp")
+    #m = MirrorPlus("1.bmp")
+    #m = MirrorPlus("2.bmp", 1)
+    #m = MirrorPlus("3.bmp")
+    #m = MirrorPlus("4.bmp")
+    #m = MirrorPlus("5.bmp")
+    #m = MirrorPlus("6.bmp")
+    #m = MirrorPlus("7.bmp")
+    #m = MirrorPlus("8.bmp")
+    #m = MirrorPlus("9.bmp")
+    m = MirrorPlus("10.bmp")
     m.mirror1()
     return 0
 if __name__ == '__main__':
