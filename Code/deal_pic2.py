@@ -105,7 +105,7 @@ class MirrorPlus():
                     cv2.imwrite(path, cj)
 #review code
 def main():
-    #m = MirrorPlus("1.bmp")
+    m = MirrorPlus("1.bmp")
     #m = MirrorPlus("2.bmp", 1)
     #m = MirrorPlus("3.bmp")
     #m = MirrorPlus("4.bmp")
@@ -114,7 +114,7 @@ def main():
     #m = MirrorPlus("7.bmp")
     #m = MirrorPlus("8.bmp")
     #m = MirrorPlus("9.bmp")
-    m = MirrorPlus("10.bmp")
+    #m = MirrorPlus("10.bmp")
     m.mirror1()
     return 0
 if __name__ == '__main__':
