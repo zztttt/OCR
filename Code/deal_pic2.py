@@ -36,8 +36,8 @@ class MirrorPlus():
                     print("ERRROR,", x, y, i, j)
                 emptyImage[i,j]=img[x,y]
         kernel = np.ones((3,3))
-        r = cv2.dilate(emptyImage, kernel)
-        #r = cv2.morphologyEx(emptyImage, cv2.MORPH_OPEN, kernel)
+        #r = cv2.dilate(emptyImage, kernel)
+        r = cv2.morphologyEx(emptyImage, cv2.MORPH_OPEN, kernel)
         return r
         cv2.imshow("111", emptyImage)
         cv2.waitKey()
@@ -62,22 +62,38 @@ class MirrorPlus():
         path = self.filename[0:self.filename.find('.')+1] + "tif"
         path = self.img_save_path + "d.normal.exp" + path
         print(path)
-        #self.invertBW(img2)
-        #plt.show(self.invertBW(img2))
-        cv2.imwrite(path, self.invertBW(img2))
+        img2 = self.invertBW(img2)
+        img2 = self.invertLine(img2)
+        
+
+        cv2.imwrite(path, img2)
         #cv2.imshow("111", img2)
         #cv2.waitKey()
     def invertBW(self, img2):
         img = copy.deepcopy(img2)
         y, x, c = img.shape
         #print(img.shape)
+
         for j in range(y):
             for i in range(x):
                 img[j][i] = [255,255,255] - img[j][i]
         
-        #for j in range(340, 400):
-        #    for i in range(x):
-        #        img[j][i] = [255,255,255] - img[j][i]
+        return img
+
+    def invertLine(self, img2):
+        img = copy.deepcopy(img2)
+        y, x, c = img.shape
+        kernel = np.ones((2,2))
+        ##img = cv2.dilate(img, kernel)
+        img = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+        for j in range(1, 30):
+            for i in range(350, 650):
+                img[j][i] = [255,255,255] - img[j][i]
+
+        for j in range(340, 400):
+            for i in range(x):
+                img[j][i] = [255,255,255] - img[j][i]
+
         
         return img
 
@@ -122,9 +138,9 @@ class MirrorPlus():
                     cv2.imwrite(path, cj)
 #review code
 def main():
-    m = MirrorPlus("1.bmp")
+    #m = MirrorPlus("1.bmp")
     #m = MirrorPlus("2.bmp", 1)
-    #m = MirrorPlus("3.bmp")
+    m = MirrorPlus("3.bmp")
     #m = MirrorPlus("4.bmp")
     #m = MirrorPlus("5.bmp")
     #m = MirrorPlus("6.bmp")
