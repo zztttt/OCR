@@ -64,7 +64,7 @@ class MirrorPlus():
         print(path)
         #self.invertBW(img2)
         #plt.show(self.invertBW(img2))
-        cv2.imwrite(path, self.invertBW(img2))
+        cv2.imwrite(path, img2)
         #cv2.imshow("111", img2)
         #cv2.waitKey()
     def invertBW(self, img2):
@@ -122,16 +122,28 @@ class MirrorPlus():
                     cv2.imwrite(path, cj)
 #review code
 def main():
+    for i in range(10):
+        MirrorPlus(str(i+1)).mirror1()
+        
     m = MirrorPlus("1.bmp")
-    #m = MirrorPlus("2.bmp", 1)
-    #m = MirrorPlus("3.bmp")
-    #m = MirrorPlus("4.bmp")
-    #m = MirrorPlus("5.bmp")
-    #m = MirrorPlus("6.bmp")
-    #m = MirrorPlus("7.bmp")
-    #m = MirrorPlus("8.bmp")
-    #m = MirrorPlus("9.bmp")
-    #m = MirrorPlus("10.bmp")
+    m.mirror1()
+    m = MirrorPlus("2.bmp", 1)
+    m.mirror1()
+    m = MirrorPlus("3.bmp")
+    m.mirror1()
+    m = MirrorPlus("4.bmp")
+    m.mirror1()
+    m = MirrorPlus("5.bmp")
+    m.mirror1()
+    m = MirrorPlus("6.bmp")
+    m.mirror1()
+    m = MirrorPlus("7.bmp")
+    m.mirror1()
+    m = MirrorPlus("8.bmp")
+    m.mirror1()
+    m = MirrorPlus("9.bmp")
+    m.mirror1()
+    m = MirrorPlus("10.bmp")
     m.mirror1()
     return 0
 if __name__ == '__main__':
