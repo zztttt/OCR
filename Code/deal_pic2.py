@@ -65,7 +65,6 @@ class MirrorPlus():
         img2 = self.invertBW(img2)
         img2 = self.invertLine(img2)
         
-
         cv2.imwrite(path, img2)
         #cv2.imshow("111", img2)
         #cv2.waitKey()
@@ -153,7 +152,10 @@ def main():
     #m = MirrorPlus("7.bmp")
     #m = MirrorPlus("8.bmp")
     #m = MirrorPlus("9.bmp")
+<<<<<<< HEAD
     #m = MirrorPlus("10.bmp")
+=======
+>>>>>>> origin/master
     m.mirror1()
     return 0
 if __name__ == '__main__':
