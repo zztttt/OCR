@@ -17,10 +17,10 @@ class rotatePic():
         #print("img_save_path", self.img_save_path)  
     def rotateAndSave(self):
         img = copy.deepcopy(self.img)
-        cv2.imwrite(self.save_path+"rot0_"+self.filename, np.rot90(img, 0), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
-        cv2.imwrite(self.save_path+"rot1_"+self.filename, np.rot90(img, 1), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
-        cv2.imwrite(self.save_path+"rot2_"+self.filename, np.rot90(img, 2), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
-        cv2.imwrite(self.save_path+"rot3_"+self.filename, np.rot90(img, 3), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+        cv2.imwrite(self.img_path+"rot0"+self.filename, np.rot90(img, 0), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+        cv2.imwrite(self.img_path+"rot1"+self.filename, np.rot90(img, 1), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+        cv2.imwrite(self.img_path+"rot2"+self.filename, np.rot90(img, 2), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+        cv2.imwrite(self.img_path+"rot3"+self.filename, np.rot90(img, 3), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 if __name__ == "__main__":
 
     if len(sys.argv) < 2:
