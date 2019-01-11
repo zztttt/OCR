@@ -13,8 +13,8 @@ class MirrorPlus():
         self.mode = mode
         self.filename = filename
         self.father_path = os.path.abspath(os.path.dirname(os.getcwd()+os.path.sep+"."))+"/"
-        self.img_path = self.father_path[0:self.father_path.find("Code")] + "Pic/"
-        self.img_save_path = self.father_path[0:self.father_path.find("Code")] + "Code/savedPic/"
+        self.img_path = self.father_path[0:self.father_path.find("Code")] + "/Pic/"
+        self.img_save_path = self.father_path[0:self.father_path.find("Code")] + "/Code/savedPic/"
         self.img = cv2.imread(self.img_path + self.filename)
         print("img_path", self.img_path)
         print("img_save_path", self.img_save_path)  
@@ -36,7 +36,7 @@ class MirrorPlus():
                     print("ERRROR,", x, y, i, j)
                 emptyImage[i,j]=img[x,y]
         kernel = np.ones((1,1))
-        r = cv2.dilate(emptyImage, kernel)
+        r = cv2.morphologyEx(emptyImage, cv2.MORPH_OPEN, kernel)
         return r
         cv2.imshow("111", emptyImage)
         #cv2.waitKey()
@@ -60,11 +60,11 @@ class MirrorPlus():
                     img2[j][i] = img[y - j - 1][i]
                 elif self.mode == 1:
                     a = 1
-        path = self.img_save_path + self.filename[0:self.filename.find('.')+1] + "jpg"
+        path = self.img_save_path + 'open' + self.filename[0:self.filename.find('.')+1] + "jpg"
         print(path)
         cv2.imwrite(path, img2)
-        cv2.imshow("111", img2)
-        cv2.waitKey()
+        #cv2.imshow("111", img2)
+        #cv2.waitKey()
 #review code
 def main():
     #m = MirrorPlus("1.bmp")
@@ -76,7 +76,7 @@ def main():
     #m = MirrorPlus("7.bmp")
     #m = MirrorPlus("8.bmp")
     #m = MirrorPlus("9.bmp")
-    m = MirrorPlus("10.bmp")
+    #m = MirrorPlus("10.bmp")
     
    
     m.mirror1()
