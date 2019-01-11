@@ -82,17 +82,17 @@ class MirrorPlus():
     def invertLine(self, img2):
         img = copy.deepcopy(img2)
         y, x, c = img.shape
-        kernel = np.ones((2,2))
+        kernel = np.ones((3,3))
         ##img = cv2.dilate(img, kernel)
-        img = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
-        for j in range(1, 30):
-            for i in range(350, 650):
+        #img = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+        for j in range(0, 30):
+            for i in range(360, 640):
                 img[j][i] = [255,255,255] - img[j][i]
 
-        for j in range(340, 400):
+        for j in range(343, 390):
             for i in range(x):
                 img[j][i] = [255,255,255] - img[j][i]
-
+        img = cv2.erode(img, kernel)
         
         return img
 
@@ -137,33 +137,16 @@ class MirrorPlus():
                     cv2.imwrite(path, cj)
 #review code
 def main():
-    '''
-    for i in range(10):
-        MirrorPlus(str(i+1)).mirror1()
-    '''
-        
-    m = MirrorPlus("1.bmp")
+    #m = MirrorPlus("1.bmp")
+    #m = MirrorPlus("2.bmp", 1)
+    #m = MirrorPlus("3.bmp")
+    #m = MirrorPlus("4.bmp")
+    #m = MirrorPlus("5.bmp")
+    #m = MirrorPlus("6.bmp")
+    #m = MirrorPlus("7.bmp")
+    #m = MirrorPlus("8.bmp")
+    #m = MirrorPlus("9.bmp")
     m.mirror1()
-    m = MirrorPlus("2.bmp", 1)
-    m.mirror1()
-    '''
-    m = MirrorPlus("3.bmp")
-    m.mirror1()
-    m = MirrorPlus("4.bmp")
-    m.mirror1()
-    m = MirrorPlus("5.bmp")
-    m.mirror1()
-    m = MirrorPlus("6.bmp")
-    m.mirror1()
-    m = MirrorPlus("7.bmp")
-    m.mirror1()
-    m = MirrorPlus("8.bmp")
-    m.mirror1()
-    m = MirrorPlus("9.bmp")
-    m.mirror1()
-    m = MirrorPlus("10.bmp")
-    m.mirror1()
-    '''
     return 0
 if __name__ == '__main__':
     main()
