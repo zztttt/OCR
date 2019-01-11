@@ -14,11 +14,12 @@ class MirrorPlus():
         self.filename = filename
         self.father_path = os.path.abspath(os.path.dirname(os.getcwd()+os.path.sep+"."))+"/"
         self.img_path = self.father_path[0:self.father_path.find("Code")] + "Pic/"
-        self.img_save_path = self.father_path + "Code/savedPic/"
+        self.img_save_path = self.father_path[0:self.father_path.find("Code")] + "Code/savedPic/"
         self.img = cv2.imread(self.img_path + self.filename)
-        #print("img_path", self.img_path)
-        #print("img_save_path", self.img_save_path)  
+        print("img_path", self.img_path)
+        print("img_save_path", self.img_save_path)  
         #print("img", self.img)
+    
     #plus the picture
     def Interpolation(self):
         img = copy.deepcopy(self.img)
@@ -34,8 +35,9 @@ class MirrorPlus():
                 if x >= 128 or y >= 240:
                     print("ERRROR,", x, y, i, j)
                 emptyImage[i,j]=img[x,y]
-                
-        return emptyImage
+        kernel = np.ones((3,3))
+        r = cv2.dilate(emptyImage, kernel)
+        return r
         cv2.imshow("111", emptyImage)
         cv2.waitKey()
     def deleteBlank(self):
@@ -55,9 +57,11 @@ class MirrorPlus():
         for i in range(x):
             for j in range(y):
                 img2[j][i] = img[y - j - 1][i]
-        cv2.imwrite(self.img_save_path + self.filename[0:self.filename.find('.')+1] + "jpg", img2)
+        path = self.img_save_path + self.filename[0:self.filename.find('.')+1] + "jpg"
+        print(path)
+        cv2.imwrite(path, img2)
         cv2.imshow("111", img2)
-        cv2.waitKey()
+        #cv2.waitKey()
 #review code
 def main():
     m = MirrorPlus("4.bmp")
