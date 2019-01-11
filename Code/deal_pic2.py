@@ -36,8 +36,8 @@ class MirrorPlus():
                     print("ERRROR,", x, y, i, j)
                 emptyImage[i,j]=img[x,y]
         kernel = np.ones((3,3))
-        #r = cv2.dilate(emptyImage, kernel)
-        r = cv2.morphologyEx(emptyImage, cv2.MORPH_OPEN, kernel)
+        r = cv2.dilate(emptyImage, kernel)
+        #r = cv2.morphologyEx(emptyImage, cv2.MORPH_OPEN, kernel)
         return r
         cv2.imshow("111", emptyImage)
         cv2.waitKey()
@@ -109,7 +109,7 @@ class MirrorPlus():
                     cv2.imwrite(path, cj)
 #review code
 def main():
-    #m = MirrorPlus("1.bmp")
+    m = MirrorPlus("1.bmp")
     #m = MirrorPlus("2.bmp", 1)
     #m = MirrorPlus("3.bmp")
     #m = MirrorPlus("4.bmp")
@@ -118,7 +118,7 @@ def main():
     #m = MirrorPlus("7.bmp")
     #m = MirrorPlus("8.bmp")
     #m = MirrorPlus("9.bmp")
-    m = MirrorPlus("10.bmp")
+    #m = MirrorPlus("10.bmp")
     m.mirror1()
     return 0
 if __name__ == '__main__':
