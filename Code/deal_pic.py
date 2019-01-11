@@ -35,11 +35,11 @@ class MirrorPlus():
                 if x >= 128 or y >= 240:
                     print("ERRROR,", x, y, i, j)
                 emptyImage[i,j]=img[x,y]
-        kernel = np.ones((3,3))
+        kernel = np.ones((1,1))
         r = cv2.dilate(emptyImage, kernel)
-        return r
+        return emptyImage
         cv2.imshow("111", emptyImage)
-        cv2.waitKey()
+        #cv2.waitKey()
     def deleteBlank(self):
         maskX = []
         maskY = []
@@ -56,15 +56,29 @@ class MirrorPlus():
         #img[y][x]
         for i in range(x):
             for j in range(y):
-                img2[j][i] = img[y - j - 1][i]
+                if self.mode == 0:
+                    img2[j][i] = img[y - j - 1][i]
+                elif self.mode == 1:
+                    a = 1
         path = self.img_save_path + self.filename[0:self.filename.find('.')+1] + "jpg"
         print(path)
         cv2.imwrite(path, img2)
         cv2.imshow("111", img2)
-        #cv2.waitKey()
+        cv2.waitKey()
 #review code
 def main():
-    m = MirrorPlus("4.bmp")
+    #m = MirrorPlus("1.bmp")
+    #m = MirrorPlus("2.bmp", 1)
+    #m = MirrorPlus("3.bmp")
+    #m = MirrorPlus("4.bmp")
+    #m = MirrorPlus("5.bmp")
+    #m = MirrorPlus("6.bmp")
+    #m = MirrorPlus("7.bmp")
+    #m = MirrorPlus("8.bmp")
+    #m = MirrorPlus("9.bmp")
+    m = MirrorPlus("10.bmp")
+    
+   
     m.mirror1()
     return 0
 if __name__ == '__main__':
