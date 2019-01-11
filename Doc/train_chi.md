@@ -65,8 +65,8 @@
 ```
 *   使用自定义字库效果：  
 Source:  
-![](./picture/1s.png)
+![](./picture/2s.png)                         
 Output：  
-![](picture/1o.png)  
+![](picture/2o.png)  
 很容易发现该识别并不是完美的，一方面是字符集的精度不够，另一方面是对图像的处理存在缺陷，从官方文档里可知，tesseract对在方框里面的字符识别能力较差，这一点待改进
 
