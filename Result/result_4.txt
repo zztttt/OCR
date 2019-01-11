@@ -1,0 +1,9 @@
+Stop 02U
+LatCh needles 1
+
+SteP 139 Degree 0 Needle 107
+The key [FS] deletes the error
+
+Internal battery holding Programs |
+out of order
+GSiQoT

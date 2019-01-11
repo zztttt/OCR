@@ -9,8 +9,7 @@ import sys, os
 plt.switch_backend('agg')
 
 class MirrorPlus():
-    def __init__(self, filename, mode = 0):
-        self.mode = mode
+    def __init__(self, filename):
         self.filename = filename
         self.father_path = os.path.abspath(os.path.dirname(os.getcwd()+os.path.sep+"."))+"/"
         self.img_path = self.father_path[0:self.father_path.find("Code")] + "Pic/"
@@ -36,8 +35,10 @@ class MirrorPlus():
                     print("ERRROR,", x, y, i, j)
                 emptyImage[i,j]=img[x,y]
         kernel = np.ones((3,3))
-        #r = cv2.dilate(emptyImage, kernel)
-        r = cv2.morphologyEx(emptyImage, cv2.MORPH_OPEN, kernel)
+        if self.filename == "2.bmp":
+            r = cv2.dilate(emptyImage, kernel)
+        else:
+            r = cv2.morphologyEx(emptyImage, cv2.MORPH_OPEN, kernel)
         return r
         cv2.imshow("111", emptyImage)
         cv2.waitKey()
@@ -57,13 +58,14 @@ class MirrorPlus():
         #img[y][x]
         for i in range(x):
             for j in range(y):
-                if self.mode == 0 :
+                if self.filename != "2.bmp" :
                     img2[j][i] = img[y - j - 1][i]
         path = self.filename[0:self.filename.find('.')+1] + "tif"
         path = self.img_save_path + "d.normal.exp" + path
         print(path)
         img2 = self.invertBW(img2)
-        img2 = self.invertLine(img2)
+        if self.filename != "1.bmp" and self.filename != "2.bmp":
+            img2 = self.invertLine(img2)
         
         cv2.imwrite(path, img2)
         #cv2.imshow("111", img2)
@@ -86,6 +88,7 @@ class MirrorPlus():
         ##img = cv2.dilate(img, kernel)
         #img = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
         # invert up ERROR
+
         for j in range(0, 31):
             for i in range(360, 640):
                 img[j][i] = [255,255,255] - img[j][i]
@@ -95,7 +98,7 @@ class MirrorPlus():
                 img[j][i] = [255,255,255] - img[j][i]
         # invert down G61Q0T
         for j in range(468,500):
-            for i in range(737,935):
+            for i in range(738,935):
                 img[j][i] = [255,255,255] - img[j][i]
 
         img = cv2.erode(img, kernel)
@@ -145,17 +148,14 @@ class MirrorPlus():
 def main():
     #m = MirrorPlus("1.bmp")
     #m = MirrorPlus("2.bmp", 1)
-    m = MirrorPlus("3.bmp")
+    #m = MirrorPlus("3.bmp")
     #m = MirrorPlus("4.bmp")
     #m = MirrorPlus("5.bmp")
     #m = MirrorPlus("6.bmp")
     #m = MirrorPlus("7.bmp")
     #m = MirrorPlus("8.bmp")
     #m = MirrorPlus("9.bmp")
-<<<<<<< HEAD
-    #m = MirrorPlus("10.bmp")
-=======
->>>>>>> origin/master
+    m = MirrorPlus("10.bmp")
     m.mirror1()
     return 0
 if __name__ == '__main__':
