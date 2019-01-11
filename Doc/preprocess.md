@@ -38,7 +38,21 @@ After that, we find the interpolated images are rough with a lot of edges and co
     kernel = np.ones((3,3))
     r = cv2.dilate(emptyImage, kernel)
 ```
-## Separation
+## Split
+Use Projection Detection Method, count the valid pixel on the x-axis. Then set a threshold of the count of pixels, if the count of pixels greater than the threshold, then mark this row for the valid row.
+```
+inLine = False
+start = 0
+    for i in range(height):
+        if((not(inLine)) and (projection[i] > 5)):
+            inLine = True
+            start = i
+        elif(i - start > 2 and projection[i] < 5 and inLine):
+            inLine = False
+            if (i - start > 2):
+                print i,start,i-start+2
+                cj = img[start:i,0:width]
+```
 
 ## Dilation
 Dilation operation thicken the thin character, which is used in above preprocess. We think appropriately thicken the character is helpful for recognition.
@@ -53,4 +67,3 @@ cv2.imwrite(self.save_path+"rot1_"+self.filename, np.rot90(img, 1), [int(cv2.IMW
 cv2.imwrite(self.save_path+"rot2_"+self.filename, np.rot90(img, 2), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 cv2.imwrite(self.save_path+"rot3_"+self.filename, np.rot90(img, 3), [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 ```
-
