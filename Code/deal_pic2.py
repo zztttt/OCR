@@ -145,17 +145,14 @@ class MirrorPlus():
 def main():
     #m = MirrorPlus("1.bmp")
     #m = MirrorPlus("2.bmp", 1)
-    m = MirrorPlus("3.bmp")
+    #m = MirrorPlus("3.bmp")
     #m = MirrorPlus("4.bmp")
     #m = MirrorPlus("5.bmp")
     #m = MirrorPlus("6.bmp")
     #m = MirrorPlus("7.bmp")
     #m = MirrorPlus("8.bmp")
     #m = MirrorPlus("9.bmp")
-<<<<<<< HEAD
-    #m = MirrorPlus("10.bmp")
-=======
->>>>>>> origin/master
+    m = MirrorPlus("10.bmp")
     m.mirror1()
     return 0
 if __name__ == '__main__':
