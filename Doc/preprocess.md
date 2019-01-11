@@ -10,7 +10,7 @@
 # 
 
 ## Mirror
-Almost all given images to recognition is mirrored, we make symmetrical change in y-axis for each pixel. 
+Almost all given images to recognition is mirrored, we make symmetrical change in x-axis for each pixel. 
 ```
     y = img.shape[0]
     x = img.shape[1]
@@ -33,7 +33,7 @@ We use a simple nearest neighbor interpolation which extend the image to the sha
             y=int(j/sw)
             emptyImage[i,j]=img[x,y]
 ```
-After that, we find the interpolated images are rough with a lot of edges and corners. To make edge smooth, we make a dilation operation after interpolation.
+After that, we find the interpolated images are rough with a lot of edges and corners. To make edge smooth, we make a open operation after interpolation.
 ```
     kernel = np.ones((3,3))
     r = cv2.dilate(emptyImage, kernel)
