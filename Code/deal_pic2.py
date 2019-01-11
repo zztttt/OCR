@@ -85,13 +85,19 @@ class MirrorPlus():
         kernel = np.ones((3,3))
         ##img = cv2.dilate(img, kernel)
         #img = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
-        for j in range(0, 30):
+        # invert up ERROR
+        for j in range(0, 31):
             for i in range(360, 640):
                 img[j][i] = [255,255,255] - img[j][i]
-
+        # invert mid F8
         for j in range(343, 390):
             for i in range(x):
                 img[j][i] = [255,255,255] - img[j][i]
+        # invert down G61Q0T
+        for j in range(468,500):
+            for i in range(737,935):
+                img[j][i] = [255,255,255] - img[j][i]
+
         img = cv2.erode(img, kernel)
         
         return img
@@ -139,13 +145,17 @@ class MirrorPlus():
 def main():
     #m = MirrorPlus("1.bmp")
     #m = MirrorPlus("2.bmp", 1)
-    #m = MirrorPlus("3.bmp")
+    m = MirrorPlus("3.bmp")
     #m = MirrorPlus("4.bmp")
     #m = MirrorPlus("5.bmp")
     #m = MirrorPlus("6.bmp")
     #m = MirrorPlus("7.bmp")
     #m = MirrorPlus("8.bmp")
     #m = MirrorPlus("9.bmp")
+<<<<<<< HEAD
+    #m = MirrorPlus("10.bmp")
+=======
+>>>>>>> origin/master
     m.mirror1()
     return 0
 if __name__ == '__main__':
