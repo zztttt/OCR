@@ -59,6 +59,9 @@
     
     echo Create Tessdata..  
     combine_tessdata d.  
+
+    echo Delete useless file
+    del unicharset,d.unicharset,d.shapetable,d.pffmtable,d.normproto,d.normal.exp0.tr,d.inttemp
 ```
 *   使用自定义字库效果：  
 Source:  
