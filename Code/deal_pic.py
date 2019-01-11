@@ -37,7 +37,7 @@ class MirrorPlus():
                 emptyImage[i,j]=img[x,y]
         kernel = np.ones((1,1))
         r = cv2.dilate(emptyImage, kernel)
-        return emptyImage
+        return r
         cv2.imshow("111", emptyImage)
         #cv2.waitKey()
     def deleteBlank(self):
