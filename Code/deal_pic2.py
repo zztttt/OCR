@@ -62,11 +62,24 @@ class MirrorPlus():
         path = self.filename[0:self.filename.find('.')+1] + "tif"
         path = self.img_save_path + "d.normal.exp" + path
         print(path)
-        cv2.imwrite(path, img2)
+        #self.invertBW(img2)
+        #plt.show(self.invertBW(img2))
+        cv2.imwrite(path, self.invertBW(img2))
         #cv2.imshow("111", img2)
         #cv2.waitKey()
-    def invertBW(self):
-        pass
+    def invertBW(self, img2):
+        img = copy.deepcopy(img2)
+        y, x, c = img.shape
+        #print(img.shape)
+        for j in range(y):
+            for i in range(x):
+                img[j][i] = [255,255,255] - img[j][i]
+        
+        #for j in range(340, 400):
+        #    for i in range(x):
+        #        img[j][i] = [255,255,255] - img[j][i]
+        
+        return img
 
     def rotate_bound(self, angle):
         img = copy.deepcopy(self.img)
