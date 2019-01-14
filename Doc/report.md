@@ -184,6 +184,7 @@
 [commit history](https://github.com/zztttt/OCR/commits/master)
 
 ## Reference:
+[An Overview of the Tesseract OCR Engine](https://github.com/tesseract-ocr/docs/blob/master/tesseracticdar2007.pdf)  
+[Hybrid Page Layout Analysis via Tab-Stop Detection](https://github.com/tesseract-ocr/docs/blob/master/PageLayoutAnalysisICDAR2.pdf)  
 [Github: tesseract](https://github.com/tesseract-ocr/tesseract)  
 [tesseract识别与训练](https://www.cnblogs.com/wzben/p/5930538.html)  
-[tesseract训练](https://blog.csdn.net/chudongfang2015/article/details/51920191)
