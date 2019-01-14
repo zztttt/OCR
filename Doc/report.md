@@ -4,6 +4,7 @@
     <font size=4>组员：张政童、方俊杰、李青弈</font><br/>
 </center>
 
+### Github URL：[OCR](https://github.com/zztttt/OCR)
 ## 光学字符识别OCR概述
 光字符识别 Optical Character Recognition (OCR)一直是一项计算机视觉的重要应用， 随着人工智能的发展，特别是深度学的流行，深度学习方法开始被广泛应用在 OCR 领域。被谷歌资助的 Tesseract 项目自 2006 年问世以来，一直是业界的领导。而该系统的 Version 4.0 引入了 LSTM 技术，该项目已达到行业标准的水平。 
 
