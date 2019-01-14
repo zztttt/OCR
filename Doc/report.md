@@ -43,7 +43,6 @@
     *   2    Legacy + LSTM engines.
     *   3    Default, based on what is available.  
     这里采用了1  
-    --psm
     ```
     # Define config parameters.
     # '-l eng'  for using the English language
