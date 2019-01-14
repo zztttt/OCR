@@ -7,7 +7,7 @@ from deal_pic2 import MirrorPlus
 if __name__ == '__main__':
  
   if len(sys.argv) < 2:
-    print 'Usage: python ocr_simple.py image.jpg'
+    print('Usage: python ocr_simple.py image.jpg')
     sys.exit(1)
     
   m = MirrorPlus(sys.argv[1])

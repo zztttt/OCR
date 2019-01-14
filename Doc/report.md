@@ -27,8 +27,42 @@
 * 字符识别
 **字母识别**：OCR是基于字符结构的方法，对字母识别的成功率较高。字母结构在水平方向上和竖直方向上各有三种类型，笔画也有两大类。根据字符的这些特点，可以对字母进行逐级的分类，形成一颗判定树，每个字符就是一个叶子。这种方法不需要对分割得到的字符进行大小归一化处理，也不需要建立样本库，完全根据字符自身的结构特征进行逼近识别。 
 **数字识别**：先计算欧拉数，再提取凹陷区的特征，最后根据特征组合识别字符。（欧拉数时一种应用广泛的对物体进行识别的特征，定义为连同成分数减去洞数。凹陷区的定义为：如果连接一个图像上任意两点的直线都属于该图像，那么该图像为凸图像。如果连接图像上两点的直线有部分不属于图像，那么称该图像为凹图像，在凹图像中，任意两点间的直线中不属于图像部分所在的区域称为图像的凹陷区）。
-## 二、对代码的梳理
-    还是lqy的东西
+## 二、代码的梳理
+我们自己的图像处理结合官方文档给的Demo后，集成在了test.py文件内，代码执行流程如下：  
+*   test.py调用MirrorPlus类：  
+    MirrorPlus的参数为存储在Pic目录下的文件名，调用mirror1()函数为对图像的处理，产生的中间图片存放在/Code/savedPic里，供后续操作使用
+    ```
+    m = MirrorPlus(sys.argv[1])
+    m.mirror1()
+    ```
+*   设置config：  
+    -l代表使用的language，这里采用我们自己训练出来的字符集：d  
+    --oem代表使用的LSTM OCR engine//Legacy engine，具体数字含义如下：
+    *   0    Legacy engine only.
+    *   1    Neural nets LSTM engine only.
+    *   2    Legacy + LSTM engines.
+    *   3    Default, based on what is available.  
+    这里采用了1  
+    --psm
+    ```
+    # Define config parameters.
+    # '-l eng'  for using the English language
+    # '--oem 1' for using LSTM OCR Engine
+    config = ('-l d --oem 1 --psm 3')
+    ```
+*   识别图像：  
+    调用pytesseract库里的image_to_string api，并使用以上config来进行图像识别，将识别结果保留在text中
+    ```
+    # Run tesseract OCR on image
+    text = pytesseract.image_to_string(im, config=config)
+    ```
+*   保存结果：  
+    res_path为/Result/result_xx.txt，来保留xx.bmp的识别结果
+    ```
+    f = open(res_path, 'w')
+    f.write(text)
+    f.close()
+    ```
 ## 三、图像处理
 考虑原图片过小, 我们首先使用了最近邻插值将原本240x128大小的图片转换为1000x500像素, 然后继续了开操作消除毛刺, 继而对镜像反转的图片进行镜像使得文字正置。考虑到背景黑色可能影响到识别，将整张图片像素值黑白倒置，转换为白底黑字，但又存在三个部分文字与此矛盾，对该三部分再进行黑白导致使得所有文字都为白底黑字。这同时也去除了一些框，可以提高识别率。
 
@@ -122,7 +156,7 @@
     *   计算字符集合
     *   生成中间文件
     *   重命名中间文件
-    *   集成这些中间文件为d.normal.traineddata
+    *   集成这些中间文件为d.traineddata
     *   删除中间文件  
 
     bat脚本：
@@ -150,7 +184,7 @@
     del unicharset,d.unicharset,d.shapetable,d.pffmtable,d.normproto,d.normal.exp0.tr,d.inttemp
     ```
 7.  使用自己的训练结果进行图片识别：  
-    将d.normal.traineddata放入Linux系统里的 ~/usr/share/tesseract/4.00/tessdata里，并将test.py里的config所使用的语言改成d即可。
+    将d.traineddata放入Linux系统里的 ~/usr/share/tesseract/4.00/tessdata里，并将test.py里的config所使用的语言改成d即可。
 
 ## 五、程序使用方法：
 *   进入Code目录下，输入以下命令
